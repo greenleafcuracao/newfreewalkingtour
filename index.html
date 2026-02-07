@@ -178,37 +178,47 @@
   #calendar {
     max-width: 450px;
     min-height: 300px;
-    margin: 30px auto;
+    margin: 0 auto;
     background: white;
-    padding: 15px;
+    padding: 0;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 /* BOOKING LAYOUT */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and border are included in total width/height */
+}
 
+#booking {
+    padding: 20px; /* Optional: Add some padding to the section */
 .booking-container {
-  display: flex;
-  gap: 30px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
+    display: flex; /* Use flexbox for layout */
+    gap: 30px; /* Space between items */
+    justify-content: flex-start; /* Align horizontally at start */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap */
 }
 
 .calendar-box {
-  flex: 1;
-  min-width: 280px;
-  max-width: 450px;
+    flex: 1; /* Flex-grow */
+    min-width: 280px; /* Minimum width for responsiveness */
+    max-width: 450px; /* Maximum width for responsiveness */
+    background: #f0f0f0; /* Optional: Background color for visibility */
 }
 
 .form-box {
-  flex: 1;
-  min-width: 280px;
-  max-width: 450px;
+    flex: 1; /* Flex-grow */
+    min-width: 280px; /* Minimum width for responsiveness */
+    max-width: 450px; /* Maximum width for responsiveness */
+    background: #f0f0f0; /* Optional: Background color for visibility */
 }
 
 /* Smaller calendar */
 #calendar {
-  font-size: 0.65rem;
+     font-size: 0.65rem; /* Font size adjustment */
+    padding: 10px; /* Optional: Add padding */
 }
 
 /* Mobile layout */
@@ -316,35 +326,35 @@
     </div>
   </section>
  <!-- BOOKING new-->
-  <section id="booking">
+<section id="booking">
   <h2>Book Free Walking Tour</h2>
 
-  <div class="booking-container">
+    <div class="booking-container">
 
-  <div class="calendar-box">
-    <div id="calendar"></div>
-  </div>
+      <div class="calendar-box">
+        <div id="calendar"></div>
+      </div>
 
-  <div class="form-box">
-    <form id="bookingForm">
-    <select id="tour" required>
-      <option value="">Select Tour</option>
-      <option>Punda</option>
-      <option>Otrobanda</option>
-      <option>Scharloo / Fleur de Marie</option>
-      <option>Pietermaai</option>
-    </select>
+      <div class="form-box">
+        <form id="bookingForm">
+          <select id="tour" required>
+            <option value="">Select Tour</option>
+            <option>Punda</option>
+            <option>Otrobanda</option>
+            <option>Scharloo / Fleur de Marie</option>
+            <option>Pietermaai</option>
+          </select>
 
-    <input type="text" id="name" placeholder="Your Name" required>
+          <input type="text" id="name" placeholder="Your Name" required>
 
-    <input type="email" id="email" placeholder="Your Email" required>
+          <input type="email" id="email" placeholder="Your Email" required>
 
-    <input type="text" id="date" placeholder="Selected Date" readonly required>
+          <input type="text" id="date" placeholder="Selected Date" readonly required>
 
-    <button type="submit">Request Booking</button>
+          <button type="submit">Request Booking</button>
 
-    </form>
-  </div>
+        </form>
+    </div>
   </div>  
 </section>
 
