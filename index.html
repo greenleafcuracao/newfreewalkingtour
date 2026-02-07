@@ -289,6 +289,13 @@
   <div id="calendar"></div>
 
   <form id="bookingForm">
+    <select id="tour" required>
+      <option value="">Select Tour</option>
+      <option>Punda</option>
+      <option>Otrobanda</option>
+      <option>Scharloo / Fleur de Marie</option>
+      <option>Pietermaai</option>
+    </select>
 
     <input type="text" id="name" placeholder="Your Name" required>
 
@@ -378,16 +385,38 @@ document.addEventListener("DOMContentLoaded", function() {
   calendar.render();
 
 
-  /* Booking submit */
-  document.getElementById("bookingForm").addEventListener("submit", function(e){
+/* WhatsApp Booking */
+    document.getElementById("bookingForm").addEventListener("submit", function(e){
 
-    e.preventDefault();
+      e.preventDefault();
 
-    alert("Booking request sent!\nWe will contact you soon.");
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const date = document.getElementById("date").value;
+      const tour = document.getElementById("tour").value;
 
-    this.reset();
+      if(!tour || !date){
+        alert("Please select a tour and date");
+        return;
+      }
 
-  });
+      const message =
+    `Hello, I would like to book a walking tour.
+
+    Name: ${name}
+    Email: ${email}
+    Tour: ${tour}
+    Date: ${date}`;
+
+      const phone = "59995267002"; // your number
+
+      const url =
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+      window.open(url, "_blank");
+
+    });
+
 
 });
 
