@@ -177,12 +177,44 @@
     /* CALENDAR */
   #calendar {
     max-width: 900px;
-    min-height: 600px;
+    min-height: 400px;
     margin: 40px auto;
     background: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+/* BOOKING LAYOUT */
+
+.booking-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.calendar-box {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+.form-box {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+/* Smaller calendar */
+#calendar {
+  font-size: 0.85rem;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .booking-container {
+    flex-direction: column;
+  }
 }
 
   </style>
@@ -286,9 +318,14 @@
   <section id="booking">
   <h2>Book Free Walking Tour</h2>
 
-  <div id="calendar"></div>
+  <div class="booking-container">
 
-  <form id="bookingForm">
+  <div class="calendar-box">
+    <div id="calendar"></div>
+  </div>
+
+  <div class="form-box">
+    <form id="bookingForm">
     <select id="tour" required>
       <option value="">Select Tour</option>
       <option>Punda</option>
@@ -305,8 +342,11 @@
 
     <button type="submit">Request Booking</button>
 
-  </form>
+    </form>
+  </div>
+  </div>  
 </section>
+
   <!-- BOOKING old
   <section id="booking">
     <h2>Book Your Tour</h2>
