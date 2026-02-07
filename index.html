@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Walking Tours Curaçao</title>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+<!-- FullCalendar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.global.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.global.min.js"></script>
+
   <!-- BASIC STYLING (you can move this to style.css later) -->
     <style>
     :root {
@@ -174,6 +177,7 @@
     /* CALENDAR */
   #calendar {
     max-width: 900px;
+    min-height: 600px;
     margin: 40px auto;
     background: white;
     padding: 15px;
@@ -325,12 +329,13 @@
   <footer>
     <p>&copy; 2026 Free Walking Tour Curaçao | Tips-based local tours</p>
   </footer>
-    <a href="https://wa.me/59995267002?text=Hello%20I%20would%20like%20to%20book%20a%20walking%20tour"
-    class="whatsapp-float"
-    target="https://wa.me/59995267002?text=Hello%20I%20would%20like%20to%20book%20a%20walking%20tour"
-    aria-label="Chat on WhatsApp">
-    💬
-    </a>
+<a href="https://wa.me/59995267002?text=Hello%20I%20would%20like%20to%20book%20a%20walking%20tour"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+   💬
+</a>
+
 <script>
 
 let selectedDate = "";
