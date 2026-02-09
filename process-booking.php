@@ -97,6 +97,7 @@ $adminMessage = waEncode(
 // WhatsApp links
 $clientWaLink = "https://wa.me/$phone?text=$clientMessage";
 $guideWaLink  = "https://wa.me/$guidePhone?text=$guideMessage";
+
 $adminWaLink  = "https://wa.me/".$admin['phone']."?text=$adminMessage";
 
 // Output
