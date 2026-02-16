@@ -20,7 +20,8 @@ if (!$calendarId) {
 $client = new Client();
 $client->setApplicationName('Free Walking Tour Curaçao');
 $client->setScopes([Calendar::CALENDAR_READONLY]);
-$client->setAuthConfig(__DIR__ . '/secure/calendar-key.json');
+$client->setAuthConfig(__DIR__ . DIRECTORY_SEPARATOR . 'secure' . DIRECTORY_SEPARATOR . 'calendar-key.json');
+
 $client->setAccessType('offline');
 
 $service = new Calendar($client);
