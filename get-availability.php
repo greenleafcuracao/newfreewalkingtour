@@ -17,7 +17,9 @@ if (!$calendarId) {
 }
 
 // Google client
-$client = new Client();
+$client = new Client([
+  'curl' => [CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4]
+]);
 $client->setApplicationName('Free Walking Tour Curaçao');
 $client->setScopes([Calendar::CALENDAR_READONLY]);
 $client->setAuthConfig(__DIR__ . DIRECTORY_SEPARATOR . 'secure' . DIRECTORY_SEPARATOR . 'calendar-key.json');

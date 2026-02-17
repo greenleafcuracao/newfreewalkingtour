@@ -209,8 +209,8 @@
     min-width: 280px; /* Minimum width for responsiveness */
     max-width: 450px; /* Maximum width for responsiveness */
     background: #f0f0f0; /* Optional: Background color for visibility */
-    border: 22px solid #360ab1; /* 22px solid black border */
-    border-radius: 8px; /* Optional: Rounded corners */
+    border: 22px solid #002B7F; /* 22px solid black border */
+    
     padding: 10px; /* Optional: Padding inside the box */
 
     /*flex: 1;  Flex-grow 
@@ -347,25 +347,17 @@
       </div>
 
       <div class="form-box">
-        <form id="bookingForm" action="process-booking.php" method="POST">       
-          
-          <select id="tour" required>
-            <option value="">Select Tour</option>
-            <option>Punda</option>
-            <option>Otrobanda</option>
-            <option>Scharloo / Fleur de Marie</option>
-            <option>Pietermaai</option>
-          </select>
+        <form id="bookingForm" action="process-booking.php" method="POST">
 
-          <input type="text" id="name" placeholder="Your Name" required>
+            <select name="tour" required>
+              <input type="text" name="name" required>
+              <input type="email" name="email" required>
+              <input type="text" name="date" id="date" readonly required>
 
-          <input type="email" id="email" placeholder="Your Email" required>
-
-          <input type="text" id="date" placeholder="Selected Date" readonly required>
-
-          <button type="submit">Request Booking</button>
+            <button type="submit">Request Booking</button>
 
         </form>
+
     </div>
   </div>  
 </section>
@@ -407,22 +399,28 @@
 </a>
 
 <script>
-
 let selectedDate = "";
+document.addEventListener("DOMContentLoaded", async function() {
 
-/* Demo booked dates */
-const bookedDates = [
-  "2026-02-08",
-  "2026-02-12",
-  "2026-02-18"
-];
+  /* LOAD AVAILABLE DATES FROM GOOGLE CALENDAR */
+  let availableDates = [];
 
-document.addEventListener("DOMContentLoaded", function() {
+  try {
+    const res = await fetch(
+      "get-availability.php?calendar=3648f3a2606df38e4d0bd4704f25a8e3285d37b23f169b421fa3a3f1e4a69b50@group.calendar.google.com"
+    );
 
-  let events = bookedDates.map(d => ({
+    availableDates = await res.json();
+
+  } catch (e) {
+    alert("Calendar could not load.");
+  }
+
+  /* SHOW AVAILABLE DATES IN GREEN */
+  let events = availableDates.map(d => ({
     start: d,
     display: "background",
-    backgroundColor: "#ccc"
+    backgroundColor: "#b8f5b1"   // light green = available
   }));
 
   let calendar = new FullCalendar.Calendar(
@@ -432,14 +430,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     dateClick: function(info){
 
-      if(bookedDates.includes(info.dateStr)){
-        alert("This date is already booked");
+      // ❌ If date is NOT in available list → block it
+      if(!availableDates.includes(info.dateStr)){
+        alert("This date is not available");
         return;
       }
 
-      selectedDate = info.dateStr;
+      // ✅ Available date
       document.getElementById("date").value = info.dateStr;
-
     },
 
     events: events
@@ -447,44 +445,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   calendar.render();
 
-
-/* WhatsApp Booking */
-    document.getElementById("bookingForm").addEventListener("submit", function(e){
-
-      e.preventDefault();
-
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const date = document.getElementById("date").value;
-      const tour = document.getElementById("tour").value;
-
-      if(!tour || !date){
-        alert("Please select a tour and date");
-        return;
-      }
-
-      const message =
-    `Hello, I would like to book a walking tour.
-
-    Name: ${name}
-    Email: ${email}
-    Tour: ${tour}
-    Date: ${date}`;
-
-      const phone = "59995267002"; // your number
-
-      const url =
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-      window.open(url, "_blank");
-
-    });
-
-
 });
 
 </script>
 
 </body>
 </html>
-}
