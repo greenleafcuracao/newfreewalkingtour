@@ -1,3 +1,18 @@
-/vendor/
-/secure/
-/composer.phar
+# Composer packages (can be rebuilt)
+vendor/
+
+# Composer executable
+composer.phar
+
+# Google service account key (VERY important to hide)
+secure/calendar-key.json
+
+# Local config files
+.env
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+pe.info
+test.php
