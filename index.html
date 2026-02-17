@@ -6,7 +6,7 @@
   <title>Walking Tours Curaçao</title>
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 <!-- FullCalendar -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.global.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/main.min.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.global.min.js"></script>
 
@@ -349,14 +349,28 @@
       <div class="form-box">
         <form id="bookingForm" action="process-booking.php" method="POST">
 
-            <select name="tour" required>
-              <input type="text" name="name" required>
-              <input type="email" name="email" required>
-              <input type="text" name="date" id="date" readonly required>
+  <label>Select Tour</label>
+  <select name="tour" required>
+    <option value="">Choose tour</option>
+    <option>Punda</option>
+    <option>Otrobanda</option>
+    <option>Scharloo/Fleur de Marie</option>
+    <option>Pietermaai</option>
+  </select>
 
-            <button type="submit">Request Booking</button>
+  <label>Your Name</label>
+  <input type="text" name="name" placeholder="Your Name" required>
 
-        </form>
+  <label>Your Email</label>
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <label>Date</label>
+  <input type="text" name="date" id="date" readonly required>
+
+  <button type="submit">Request Booking</button>
+
+</form>
+
 
     </div>
   </div>  
